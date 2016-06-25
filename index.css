@@ -1,0 +1,54 @@
+html,
+body
+{
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: #f4f4f4;
+}
+
+.header
+{
+    display: flex;
+
+    height: 80px;
+    padding: 0 16px;
+
+    background-color: #039be5;
+
+    align-items: center;
+}
+
+.header__show-menu
+{
+    font-size: 16px;
+
+    height: 40px;
+    padding: 0 16px;
+
+    text-align: center;
+
+    color: #039be5;
+    border: none;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.header__app-name
+{
+    font-size: 24px;
+    font-weight: 300;
+
+    padding-left: 32px;
+
+    letter-spacing: .5px;
+
+    color: #fff;
+}
+
+.content
+{
+    padding: 16px;
+}
