@@ -6,7 +6,7 @@
     bottom: 0;
     left: 0;
 
-    transition: background-color .3s;
+    transition: background-color .5s;
 
     background-color: rgba(0,0,0,.3);
 }
@@ -18,14 +18,19 @@
     background-color: rgba(0,0,0,0);
 }
 
+.side-nav__header
+{
+    background-color: #039be5;
+    color: #fff;
+}
+
 .side-nav__content
 {
     width: 80%;
     max-width: 280px;
     height: 100%;
 
-    transition: transform .1s;
-    transform: translateX(-103%);
+    transition: transform .5s;
 
     will-change: transform;
     box-shadow: 1px 1px 5px #999;
@@ -33,9 +38,9 @@
     background-color: #fff;
 }
 
-.side-nav__content_visible
+.side-nav__content_hidden
 {
-    transform: translateX(0);
+    transform: translateX(-103%);
 }
 
 .side-nav__close {
@@ -44,7 +49,7 @@
 }
 
 .side-nav__items {
-    margin: 0;
+    margin: 16px 0 0;
     padding: 0;
 }
 
