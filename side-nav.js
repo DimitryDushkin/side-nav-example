@@ -3,30 +3,41 @@
  * @param {Element} el
  */
 function SideNavigation(el) {
-
     var container = el,
         sidenav = el.querySelector('.side-nav__content'),
         close = el.querySelector('.side-nav__close'),
         startPosition = 0,
         currentPosition = 0,
-        isMoving = false;
+        isGestureStarted = false;
 
     this.hide = hide;
     this.show = show;
 
     close.addEventListener('click', this.hide);
-    container.addEventListener('click', function(e) {
-        // Close only on non content click
-        if (e.target === container) {
-            this.hide();
-        }
-    }.bind(this));
+    container.addEventListener('click', onContainerClick.bind(this));
 
     sidenav.addEventListener('pointerdown', onPointerDown);
     sidenav.addEventListener('pointermove', onPointerMove);
     sidenav.addEventListener('pointerup', onPointerUp);
     sidenav.addEventListener('pointercancel', onPointerUp);
-    sidenav.addEventListener('pointerout', onPointerUp);
+    sidenav.addEventListener('pointerleave', onPointerUp);
+
+    function show() {
+        container.classList.remove('side-nav_hidden');
+        sidenav.classList.remove('side-nav__content_hidden');
+    }
+
+    function hide() {
+        container.classList.add('side-nav_hidden');
+        sidenav.classList.add('side-nav__content_hidden');
+    }
+
+    function onContainerClick(e) {
+        // Close only on non content click
+        if (e.target === container) {
+            this.hide();
+        }
+    }
 
     /**
      * Start drag
@@ -34,10 +45,9 @@ function SideNavigation(el) {
      */
     function onPointerDown(e) {
         currentPosition = startPosition = e.pageX;
-        isMoving = true;
+        isGestureStarted = true;
 
         disableTransition();
-        updatePosition();
     }
 
     /**
@@ -45,7 +55,7 @@ function SideNavigation(el) {
      * @param {PointerEvent} e
      */
     function onPointerMove(e) {
-        if (!isMoving) {
+        if (!isGestureStarted) {
             return;
         }
 
@@ -59,7 +69,7 @@ function SideNavigation(el) {
      */
     function onPointerUp(e) {
         currentPosition = e.pageX;
-        isMoving = false;
+        isGestureStarted = false;
 
         enableTransition();
         resetPosition();
