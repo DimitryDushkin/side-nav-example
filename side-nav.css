@@ -36,6 +36,7 @@
     box-shadow: 1px 1px 5px #999;
 
     will-change: transform;
+    backface-visibility: hidden;
 }
 
 .side-nav__content_hidden
