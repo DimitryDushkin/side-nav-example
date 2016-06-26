@@ -20,8 +20,8 @@
 
 .side-nav__header
 {
-    background-color: #039be5;
     color: #fff;
+    background-color: #039be5;
 }
 
 .side-nav__content
@@ -32,10 +32,10 @@
 
     transition: transform .5s;
 
-    will-change: transform;
+    background-color: #fff;
     box-shadow: 1px 1px 5px #999;
 
-    background-color: #fff;
+    will-change: transform;
 }
 
 .side-nav__content_hidden
@@ -43,24 +43,31 @@
     transform: translateX(-103%);
 }
 
-.side-nav__close {
+.side-nav__close
+{
     padding: 16px;
+
     vertical-align: middle;
 }
 
-.side-nav__items {
+.side-nav__items
+{
     margin: 16px 0 0;
     padding: 0;
 }
 
-.side-nav__item {
-    padding: 8px 16px;
+.side-nav__item
+{
     height: 24px;
+    padding: 8px 16px;
+
     vertical-align: center;
+
     color: #666;
     border-bottom: 1px solid #ccc;
 }
 
-.side-nav__item_last {
+.side-nav__item_last
+{
     border: none;
 }
