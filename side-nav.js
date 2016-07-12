@@ -14,7 +14,7 @@ function SideNavigation(el) {
     this.show = show;
 
     close.addEventListener('click', this.hide);
-    container.addEventListener('click', onContainerClick.bind(this));
+    container.addEventListener('click', onContainerClick);
 
     sidenav.addEventListener('pointerdown', onPointerDown);
     sidenav.addEventListener('pointermove', onPointerMove);
@@ -35,7 +35,7 @@ function SideNavigation(el) {
     function onContainerClick(e) {
         // Close only on non content click
         if (e.target === container) {
-            this.hide();
+            hide();
         }
     }
 
@@ -46,6 +46,9 @@ function SideNavigation(el) {
     function onPointerDown(e) {
         currentPosition = startPosition = e.pageX;
         isGestureStarted = true;
+
+        // Необязательно https://w3c.github.io/pointerevents/#h-implicit-pointer-capture
+        sidenav.setPointerCapture(e.pointerId);
 
         disableTransition();
     }
@@ -70,6 +73,8 @@ function SideNavigation(el) {
     function onPointerUp(e) {
         currentPosition = e.pageX;
         isGestureStarted = false;
+
+        sidenav.releasePointerCapture(e.pointerId);
 
         enableTransition();
         resetPosition();
